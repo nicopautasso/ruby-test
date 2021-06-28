@@ -1,8 +1,8 @@
 class Comprobante
-  attr_reader : :id, :nombre, :fecha, :descripcion, :importe, :tipo, :Cliente
+  attr_reader : :id, :nombre, :fecha, :descripcion, :importe, :tipo, :cliente
   @@number_id = 0
 
-  def initialize(nombre,descripcion,importe,tipo = "factura")
+  def initialize(nombre,descripcion,importe,tipo)
     @@number_id += 1 #incremento el number_id para obtener el id incremental
     @id = number_id
     @nombre = nombre
@@ -45,29 +45,29 @@ class Empresa
     @id = number_id
     @nombre = nombre
     @razon_social = razon_social
-    @Clientes = Array.new
+    @clientes = Array.new
   end
 
   def agregar_cliente(nuevo_cliente)
-    @Clientes.push(nuevo_cliente)
+    @clientes.push(nuevo_cliente)
   end
 
   def borrar_cliente(id)
-    Clientes.each do |cliente|
+    @clientes.each do |cliente|
       if cliente.id = id
-        Clientes.delete(cliente)
+        @clientes.delete(cliente)
       end
   end
 
 end
 
-class Controladora
-  attr_accessor :clientes, :empresas, :comprobantes
+class Tipo_comprobante
+  attr_accessor :id, :descripcion
+  @@number_id = 0
 
-  def initialize
-    @Clientes = Array.new
-    @Empresas = Array.new
-    @Comprobantes = Array.new
+  def initialize(descripcion)
+    @@number_id += 1
+    @id = @@number_id
+    @descripcion = descripcion
   end
-
 end

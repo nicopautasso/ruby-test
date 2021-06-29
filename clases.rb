@@ -1,10 +1,10 @@
 class Comprobante
-  attr_reader : :id, :fecha, :descripcion, :importe, :tipo, :cliente
+  attr_reader :id, :fecha, :descripcion, :importe, :tipo, :cliente
   @@number_id = 0
 
   def initialize(descripcion,importe,tipo,cliente)
     @@number_id += 1 #incremento el number_id para obtener el id incremental
-    @id = number_id
+    @id = @@number_id
     @descripcion = descripcion
     @importe = importe
     @fecha = Time.now
@@ -42,7 +42,7 @@ class Empresa
 
   def initialize(nombre,razon_social = "S.A.")
     @@number_id += 1
-    @id = number_id
+    @id = @@number_id
     @nombre = nombre
     @razon_social = razon_social
     @clientes = Array.new
@@ -57,8 +57,8 @@ class Empresa
       if cliente.id = id
         @clientes.delete(cliente)
       end
+    end
   end
-
 end
 
 class Tipo_comprobante
@@ -70,4 +70,5 @@ class Tipo_comprobante
     @id = @@number_id
     @descripcion = descripcion
   end
+
 end

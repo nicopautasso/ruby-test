@@ -36,20 +36,25 @@ class Cliente
 
 end
 
-class Empresa
-  attr_reader :id, :nombre, :razon_social, :Clientes
+class Sucursal
+  attr_reader :id, :nombre, :razon_social, :clientes, :comprobantes
   @@number_id = 0
 
-  def initialize(nombre,razon_social = "S.A.")
+  def initialize(nombre,razon_social = "no declara")
     @@number_id += 1
     @id = @@number_id
     @nombre = nombre
     @razon_social = razon_social
     @clientes = Array.new
+    @comprobantes = Array.new
   end
 
   def agregar_cliente(nuevo_cliente)
     @clientes.push(nuevo_cliente)
+  end
+
+  def agregar_comprobante(nuevo_comprobante)
+    @comprobantes.push(nuevo_comprobante)
   end
 
   def borrar_cliente(id)
@@ -70,5 +75,16 @@ class Tipo_comprobante
     @id = @@number_id
     @descripcion = descripcion
   end
+end
 
+class Controladora
+  attr_reader :sucursales, :clientes
+
+  def initialize
+    @sucursales = Array.new
+  end
+
+  def add_sucursal(sucursal)
+    @sucursales.push(sucursal)
+  end
 end

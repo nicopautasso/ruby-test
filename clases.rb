@@ -1,15 +1,15 @@
 class Comprobante
-  attr_reader : :id, :nombre, :fecha, :descripcion, :importe, :tipo, :cliente
+  attr_reader : :id, :fecha, :descripcion, :importe, :tipo, :cliente
   @@number_id = 0
 
-  def initialize(nombre,descripcion,importe,tipo)
+  def initialize(descripcion,importe,tipo,cliente)
     @@number_id += 1 #incremento el number_id para obtener el id incremental
     @id = number_id
-    @nombre = nombre
     @descripcion = descripcion
     @importe = importe
     @fecha = Time.now
     @tipo = tipo
+    @cliente = cliente
   end
 
   def set_importe=(importe)

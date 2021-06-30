@@ -28,7 +28,25 @@ def get_cuenta_cliente(dni_cliente,data)
   end
 end
 
-def delete_cliente
+def get_all_clientes(data)
+  data.sucursales.each do |sucursal|
+    puts "Sucursal #{sucursal.nombre}:"
+    cont = 0
+      sucursal.clientes.each do |cliente|
+        cont += 1
+        puts  "Cliente #{cont}: #{cliente.nombre} #{cliente.apellido} DNI: #{cliente.dni}"
+      end
+  end
+end
+
+def delete_cliente(dni_cliente,data)
+  data.sucursales.each do |sucursal|
+      sucursal.clientes.each do |cliente|
+        if cliente.dni == dni_cliente
+          sucursal.delete_cliente(cliente.id)
+        end
+      end
+  end
 end
 
 def get_all_comprobantes

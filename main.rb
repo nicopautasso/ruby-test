@@ -28,17 +28,19 @@ def main
       get_cuenta_cliente(dni_aux,datos)
     when 3
       puts "BORRAR CLIENTE"
+      get_all_clientes(datos)
       print "Indique el dni del cliente a borrar: "
       dni_aux = gets
       dni_aux = dni_aux.to_i
       delete_cliente(dni_aux,datos)
+      get_all_clientes(datos)
     when 4
       puts "COMPROBANTES DEL SISTEMA"
       get_all_comprobantes(datos)
     when 0
       puts "Gracias por utilizar el sistema!"
     else
-      puts "Codigo incorrecto"
+      puts "Codigo incorrecto, vuelva a ejecutar"
     end
 end
 

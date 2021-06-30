@@ -56,7 +56,7 @@ class Sucursal
     @clientes.push(nuevo_cliente)
   end
 
-  def borrar_cliente(id)
+  def delete_cliente(id)
     @clientes.each do |cliente|
       if cliente.id = id
         @clientes.delete(cliente)

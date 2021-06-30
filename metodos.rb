@@ -13,7 +13,8 @@ def get_clientes(nombre_sucursal,data)
 end
 
 
-def get_cuenta_cliente
+def get_cuenta_cliente(dni_cliente,data)
+
 end
 
 def delete_cliente

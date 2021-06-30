@@ -1,5 +1,5 @@
 class Comprobante
-  attr_reader :id, :fecha, :descripcion, :importe, :tipo, :cliente
+  attr_reader :id, :fecha, :descripcion, :importe, :tipo
   @@number_id = 0
 
   def initialize(descripcion,importe,tipo,cliente)
@@ -9,7 +9,6 @@ class Comprobante
     @importe = importe
     @fecha = Time.now
     @tipo = tipo
-    @cliente = cliente
   end
 
   def set_importe=(importe)
@@ -19,7 +18,7 @@ class Comprobante
 end
 
 class Cliente
-  attr_accessor :id, :nombre, :apellido, :dni
+  attr_accessor :id, :nombre, :apellido, :dni, :comprobantes
   @@number_id = 0
 
   def initialize(nombre,apellido,dni)
@@ -28,16 +27,21 @@ class Cliente
     @nombre = nombre
     @apellido = apellido
     @dni = dni
+    @comprobantes = Array.new
   end
 
   def datos_completos
     return @nombre,@apellido,@dni
   end
 
+  def add_comprobantes(nuevo_comprobante)
+    @comprobantes.push(nuevo_comprobante)
+  end
+
 end
 
 class Sucursal
-  attr_accessor :id, :nombre, :razon_social, :clientes, :comprobantes
+  attr_accessor :id, :nombre, :razon_social, :clientes,
   @@number_id = 0
 
   def initialize(nombre,razon_social = "no declara")
@@ -46,15 +50,10 @@ class Sucursal
     @nombre = nombre
     @razon_social = razon_social
     @clientes = Array.new
-    @comprobantes = Array.new
   end
 
   def agregar_cliente(nuevo_cliente)
     @clientes.push(nuevo_cliente)
-  end
-
-  def agregar_comprobante(nuevo_comprobante)
-    @comprobantes.push(nuevo_comprobante)
   end
 
   def borrar_cliente(id)
@@ -78,7 +77,7 @@ class Tipo_comprobante
 end
 
 class Controladora
-  attr_reader :sucursales, :clientes
+  attr_reader :sucursales
 
   def initialize
     @sucursales = Array.new

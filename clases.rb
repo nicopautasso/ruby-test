@@ -2,7 +2,7 @@ class Comprobante
   attr_reader :id, :fecha, :descripcion, :importe, :tipo
   @@number_id = 0
 
-  def initialize(descripcion,importe,tipo,cliente)
+  def initialize(descripcion,importe,tipo)
     @@number_id += 1 #incremento el number_id para obtener el id incremental
     @id = @@number_id
     @descripcion = descripcion
@@ -34,14 +34,14 @@ class Cliente
     return @nombre,@apellido,@dni
   end
 
-  def add_comprobantes(nuevo_comprobante)
+  def add_comprobante(nuevo_comprobante)
     @comprobantes.push(nuevo_comprobante)
   end
 
 end
 
 class Sucursal
-  attr_accessor :id, :nombre, :razon_social, :clientes,
+  attr_accessor :id, :nombre, :razon_social, :clientes
   @@number_id = 0
 
   def initialize(nombre,razon_social = "no declara")
@@ -52,7 +52,7 @@ class Sucursal
     @clientes = Array.new
   end
 
-  def agregar_cliente(nuevo_cliente)
+  def add_cliente(nuevo_cliente)
     @clientes.push(nuevo_cliente)
   end
 

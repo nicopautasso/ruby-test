@@ -49,5 +49,16 @@ def delete_cliente(dni_cliente,data)
   end
 end
 
-def get_all_comprobantes
+def get_all_comprobantes(data)
+  data.sucursales.each do |sucursal|
+    puts "*Sucursal #{sucursal.nombre}:"
+    cont = 0
+      sucursal.clientes.each do |cliente|
+        cont += 1
+        puts  "-Cliente #{cont}: #{cliente.nombre} #{cliente.apellido} DNI: #{cliente.dni}"
+        cliente.comprobantes.each do |comprobante|
+          puts "--Comprobante #{cont}: #{comprobante.descripcion} por $#{comprobante.importe}, tipo: #{comprobante.tipo.descripcion}"
+        end
+      end
+  end
 end

@@ -2,8 +2,8 @@
 require_relative 'clases'
 
 def cargar_data
-  sucursal1 = Sucursal.new("Del Sol Parana")
-  sucursal2 = Sucursal.new("Del Sol Rafaela")
+  sucursal1 = Sucursal.new("Parana")
+  sucursal2 = Sucursal.new("Rafaela")
 
   cliente1 = Cliente.new("Nicolas","Pautasso",39031628)
   cliente2 = Cliente.new("Juan","Perez",123456789)
@@ -39,4 +39,6 @@ def cargar_data
   controladora = Controladora.new
   controladora.add_sucursal(sucursal1)
   controladora.add_sucursal(sucursal2)
+
+  controladora
 end

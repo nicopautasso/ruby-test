@@ -37,7 +37,7 @@ class Cliente
 end
 
 class Sucursal
-  attr_reader :id, :nombre, :razon_social, :clientes, :comprobantes
+  attr_accessor :id, :nombre, :razon_social, :clientes, :comprobantes
   @@number_id = 0
 
   def initialize(nombre,razon_social = "no declara")
